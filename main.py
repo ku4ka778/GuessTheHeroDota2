@@ -1,7 +1,8 @@
-import stratz
+import requests
+
+
 
 def main():
-    api = stratz.Api(lang=code_English)
-
+    print("https://stratz.com/matches/8667685544/builds")
 if __name__ == "__main__":
     main()
