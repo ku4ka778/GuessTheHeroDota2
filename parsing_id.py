@@ -44,4 +44,3 @@ def games_id(games):
             del games[i]
     return games
 
-games_id(sorting_html_code())
