@@ -35,12 +35,6 @@ def sorting_html_code():
         games = dict(zip(result1, result2))
         print(games)
     f.close()
-    return games
-
-def games_id(games):
-    for i in games.keys():
-        if games[i] == "0:00":
-            del games[i]
-    os.remove("/html_code.txt")
+    os.remove("html_code.txt")
     return games
 
