@@ -1,11 +1,15 @@
 import time
 import re
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import os
 
 
 def selenium():
-    driver = webdriver.Chrome()
+    print("Parsing...")
+    options = Options()
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(options=options)
     driver.get("https://www.opendota.com/matches/highMmr")
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     return driver
@@ -29,10 +33,8 @@ def sorting_html_code():
     with open("html_code.txt", 'r') as f:
         text = f.read()
         search_id = r"/matches/\d+"
-        search_dur = r"\d+:\d\d"
-        result1 = re.findall(search_id, text)
-        result2 = re.findall(search_dur, text)
-        games = dict(zip(result1, result2))
+        result = re.findall(search_id, text)
+        games = list(result)
         print(games)
     f.close()
     os.remove("html_code.txt")
