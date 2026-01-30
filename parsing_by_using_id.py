@@ -7,6 +7,7 @@ def gen_link_to_match():
 
 def parse_html():
     pass
+
 def choose_character():
     pass
 
