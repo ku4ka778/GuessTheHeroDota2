@@ -1,7 +1,7 @@
 import time
 import re
 from selenium import webdriver
-
+import os
 
 
 def selenium():
@@ -36,6 +36,7 @@ def sorting_html_code():
         games = dict(zip(result1, result2))
         print(games)
     f.close()
+    os.remove("/html_code.txt")
     return games
 
 def games_id(games):
