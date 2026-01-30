@@ -11,7 +11,6 @@ def selenium():
     return driver
 
 def saving_code(driver):
-
     try:
         time.sleep(10)
         html_source = driver.page_source
