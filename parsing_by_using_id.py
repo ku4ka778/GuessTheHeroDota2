@@ -34,18 +34,19 @@ def selenium(url):
         driver.quit()
     return driver
 
+def get_match_lenght():
+    with open("html_code.txt", 'r') as f:
+        text = f.read()
+        search_id = r"<div><span>\d+:\d+"
+        result = re.findall(search_id, text)
+        game_time = result[0][11:]
+        print(game_time)
+    return chr(game_time)
+
 def choose_character():
     pass
 
 def get_character_items():
     pass
 
-def get_match_lenght():
-    with open("html_code.txt", 'r') as f:
-        text = f.read()
-        search_id = r"duration<div><span>d+"
-        result = re.findall(search_id, text)
-        games = list(result)
-        print(games)
 
-selenium(gen_link_to_match())
