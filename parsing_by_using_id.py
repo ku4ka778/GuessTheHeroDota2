@@ -5,9 +5,8 @@ from selenium.webdriver.chrome.options import Options
 import time
 import re
 
-def gen_link_to_match():
+def gen_link_to_match(id):
     game_id = sorting_html_code()
-    id = randint(0,len(game_id))
     game_id = game_id[id][9:]
     url = f"https://www.opendota.com/matches/{game_id}"
     print(url)
@@ -55,6 +54,20 @@ def get_characters():
     return heroes
 
 def get_characters_items():
+    pass
 
+def agan_shard():
+    with open("html_code.txt", 'r') as f:
+        text = f.read()
+        search_id = r'data-for="scepter" currentitem="\w+'
+        agan = re.findall(search_id, text)
+        search_id = r'data-for="shard" currentitem="\w+'
+        shard = re.findall(search_id, text)
+        print(agan, "\n",  shard)
+    f.close()
+    return agan,shard
 
-selenium(gen_link_to_match())
+def creating_full_heros_info(heroes, agan, items, shard):
+    heroes_inf = {}
+
+selenium(gen_link_to_match(0))
