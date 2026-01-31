@@ -26,7 +26,7 @@ def selenium(url):
 
         with open("html_code.txt", "w", encoding='utf-8') as f:
             f.write(html_source)
-
+        f.close()
         print("Html source saved successfully")
     except:
         print("Error")
@@ -41,12 +41,20 @@ def get_match_lenght():
         result = re.findall(search_id, text)
         game_time = result[0][11:]
         print(game_time)
+    f.close()
     return chr(game_time)
 
-def choose_character():
-    pass
+def get_characters():
+    with open("html_code.txt", 'r') as f:
+        text = f.read()
+        search_id = r"/dota_react/heroes/\w+"
+        result = re.findall(search_id, text)
+        heroes = list(dict.fromkeys(result))
+        print(heroes)
+    f.close()
+    return heroes
 
-def get_character_items():
-    pass
+def get_characters_items():
 
 
+selenium(gen_link_to_match())
