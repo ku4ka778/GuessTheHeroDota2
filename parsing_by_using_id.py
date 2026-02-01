@@ -43,7 +43,7 @@ def get_match_lenght():
     f.close()
     return chr(game_time)
 
-def get_characters():
+def characters():
     with open("html_code.txt", 'r') as f:
         text = f.read()
         search_id = r"/dota_react/heroes/\w+"
@@ -53,8 +53,17 @@ def get_characters():
     f.close()
     return heroes
 
-def get_characters_items():
+def characters_items():
     pass
+
+def neutral_item():
+    with open("html_code.txt", 'r') as f:
+        text = f.read()
+        search_id = r'<div class="inflictorWithValue neutral" data-tip="true" data-for="....................."><img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/\w+'
+        neutral_items = re.findall(search_id, text)
+        print(neutral_items)
+    f.close()
+    return neutral_items
 
 def agan_shard():
     with open("html_code.txt", 'r') as f:
@@ -67,7 +76,11 @@ def agan_shard():
     f.close()
     return agan,shard
 
-def creating_full_heros_info(heroes, agan, items, shard):
+def creating_full_heros_info(heroes, items, neutral, agan, shard):
     heroes_inf = {}
+    #{hero, [items], neutral, agan, shard}
 
-selenium(gen_link_to_match(0))
+#selenium(gen_link_to_match(0))
+characters()
+agan_shard()
+neutral_item()
