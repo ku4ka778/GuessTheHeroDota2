@@ -24,5 +24,6 @@ def parsing_all_matches():
         os.remove('html_code.txt')
 
 if __name__ == "__main__":
-    pass
+    #while True:
+
 
