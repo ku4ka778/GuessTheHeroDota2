@@ -12,24 +12,15 @@ def selenium():
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.opendota.com/matches/highMmr")
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    return driver
-
-def saving_code(driver):
-    try:
-        time.sleep(10)
-        html_source = driver.page_source
-
-        with open("html_code.txt", "w", encoding='utf-8') as f:
-            f.write(html_source)
-
-        print("Html source saved successfully")
-    except:
-        print("Error")
-    finally:
-        driver.quit()
+    time.sleep(10)
+    html_source = driver.page_source
+    with open("html_code.txt", "w", encoding='utf-8') as f:
+        f.write(html_source)
+    print("Html source saved successfully")
+    driver.quit()
 
 def sorting_html_code():
-    saving_code(selenium())
+    selenium()
     with open("html_code.txt", 'r') as f:
         text = f.read()
         search_id = r"/matches/\d+"

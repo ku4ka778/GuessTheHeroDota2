@@ -29,7 +29,6 @@ def parsing_all_matches():
         json_file.close()
         os.remove('html_code.txt')
         os.remove('html_code(replaced).txt')
-        auto_git_push(REPO_DIR, COMMIT_MESSAGE)
 
 def auto_git_push(repo_path, commit_message):
     try:
