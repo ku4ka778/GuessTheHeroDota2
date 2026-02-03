@@ -45,3 +45,11 @@ def gen_matches_id():
     game_id = [game_id[9:] for game_id in game_id]
     print(game_id)
     return game_id
+
+def creating_links():
+    games_links = list()
+    games_id = gen_matches_id()
+    for i in range(len(games_id)):
+        games_links.append(f"https://www.opendota.com/matches/{games_id[i]}")
+    print(games_links)
+    return games_links
