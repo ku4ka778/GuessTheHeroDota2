@@ -54,4 +54,4 @@ if __name__ == "__main__":
     while True:
         parsing_all_matches()
         one_hour_timer()
-
+        auto_git_push(REPO_DIR, COMMIT_MESSAGE)
