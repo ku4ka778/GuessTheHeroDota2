@@ -5,10 +5,9 @@ import time
 import re
 import shutil
 
-url = []
+url = creating_links()
 def selenium(i):
     global url
-    url = creating_links()
     print(url[i])
     print("Parsing...")
     options = Options()
@@ -40,7 +39,7 @@ def get_match_length():
     return game_time
 
 def characters():
-    with open("html_code.txt", 'r') as f:
+    with open("html_code.txt", 'r', encoding='utf-8') as f:
         text = f.read()
         search_id = r"/dota_react/heroes/\w+"
         result = re.findall(search_id, text)
@@ -52,21 +51,21 @@ def characters():
 def characters_items():
     shutil.copy("html_code.txt", "html_code(replaced).txt")
     items = list()
-    with open("html_code(replaced).txt", 'r') as f:
+    with open("html_code(replaced).txt", 'r', encoding='utf-8') as f:
         filedata = f.read()
         filedata = filedata.replace("_", "A")
         f.close()
-    with open("html_code(replaced).txt", 'w') as f:
+    with open("html_code(replaced).txt", 'w', encoding='utf-8') as f:
         f.write(filedata)
     f.close()
-    with open("html_code(replaced).txt", 'r') as f:
+    with open("html_code(replaced).txt", 'r', encoding='utf-8') as f:
         updated = filedata.replace('.png" alt="" height="27px" width="37px"><div class="tooltip">',"")
     f.close()
-    with open("html_code(replaced).txt", 'w') as f:
+    with open("html_code(replaced).txt", 'w', encoding='utf-8') as f:
         f.write(updated)
     f.close()
     found_lines = []
-    with open("html_code(replaced).txt", 'r') as file:
+    with open("html_code(replaced).txt", 'r', encoding='utf-8') as file:
         for line in file:
             if '<div class="sc-tilXH gfboHN">' in line:
                 found_lines.append(line.strip())
@@ -85,7 +84,7 @@ def characters_items():
     return items
 
 def neutral_item():
-    with open("html_code.txt", 'r') as f:
+    with open("html_code.txt", 'r', encoding='utf-8') as f:
         text = f.read()
         search_id = r'<div class="inflictorWithValue neutral" data-tip="true" data-for="....................."><img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/\w+'
         neutral_items = re.findall(search_id, text)
@@ -94,7 +93,7 @@ def neutral_item():
     return neutral_items
 
 def agan():
-    with open("html_code.txt", 'r') as f:
+    with open("html_code.txt", 'r', encoding='utf-8') as f:
         text = f.read()
         search_id = r'</div></div></div><img src="/assets/images/dota2/scepter_\d+'
         aghanim = re.findall(search_id, text)
@@ -103,7 +102,7 @@ def agan():
     return aghanim
 
 def shard():
-    with open("html_code.txt", 'r') as f:
+    with open("html_code.txt", 'r', encoding='utf-8') as f:
         text = f.read()
         search_id = r'data-for="scepter" currentitem="false"><img src="/assets/images/dota2/shard_\d+'
         ag_shard = re.findall(search_id, text)
@@ -118,7 +117,6 @@ def creating_full_heroes_info():
     aghanim = agan()
     ag_shard = shard()
     game_heroes = [heroes, items, neutral_items, aghanim, ag_shard]
-    print(game_heroes)
     return game_heroes
 
 
