@@ -249,3 +249,59 @@
         ]
     ]
 }
+{
+    "8676651187": [
+        "https://www.opendota.com/matches/8676651187",
+        "12:18",
+        [
+            [
+                "pudge",
+                "pangolier",
+                "nyx_assassin",
+                "weaver",
+                "shadow_shaman",
+                "silencer",
+                "earthshaker",
+                "necrolyte",
+                "tinker",
+                "ancient_apparition",
+                "juggernaut",
+                "omniknight",
+                "venomancer",
+                "jakiro",
+                "monkey_king",
+                "faceless_void",
+                "dazzle",
+                "morphling"
+            ],
+            "[['bracer', 'bottle', 'meteor_hammer', 'bracer', 'branches', 'phase_boots'], ['power_treads', 'magic_wand', 'crown', 'blight_stone', 'diffusal_blade', 'branches'], ['arcane_boots', 'crown', 'robe', 'magic_wand'], ['power_treads', 'blight_stone', 'branches', 'falcon_blade', 'ward_observer', 'magic_wand'], ['blood_grenade', 'magic_stick', 'famango', 'crown', 'wind_lace', 'tranquil_boots'], [], ['radiance', 'quelling_blade', 'bracer', 'magic_wand', 'phase_boots'], [], ['arcane_boots', 'point_booster', 'bracer', 'magic_wand'], []]",
+            [
+                "polliwog_charm"
+            ],
+            [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+            ],
+            [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+            ]
+        ]
+    ]
+}
