@@ -35,8 +35,13 @@ def sorting_html_code():
         search_id = r"/matches/\d+"
         result = re.findall(search_id, text)
         games = list(result)
-        print(games)
     f.close()
     os.remove("html_code.txt")
     return games
 
+def gen_matches_id():
+    game_id = sorting_html_code()
+    print(len(game_id), "ready to be parsed")
+    game_id = [game_id[9:] for game_id in game_id]
+    print(game_id)
+    return game_id
