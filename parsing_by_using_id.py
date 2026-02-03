@@ -1,12 +1,13 @@
-from parsing_id import creating_links
+from parsing_id import creating_links, gen_matches_id
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 import re
 import shutil
 
-
+global url
 def selenium(i):
+    global url
     url = creating_links()
     print(url[i])
     print("Parsing...")
@@ -27,16 +28,14 @@ def selenium(i):
         print("Error")
     finally:
         driver.quit()
-    return driver
+    return url
 
 def get_match_length():
-    with open("html_code.txt", 'r') as f:
+    with open("html_code.txt", 'r', encoding='utf-8') as f:
         text = f.read()
         search_id = r"<div><span>\d+:\d+"
         result = re.findall(search_id, text)
-        print(result)
         game_time = result[0][11:]
-        print(game_time)
     f.close()
     return game_time
 
@@ -47,7 +46,6 @@ def characters():
         result = re.findall(search_id, text)
         heroes = list(dict.fromkeys(result))
         heroes = [heroes[19:] for heroes in heroes]
-        print(heroes)
     f.close()
     return heroes
 
@@ -84,7 +82,6 @@ def characters_items():
     for i in range(len(items)):
         items = str(items)
         items = items.replace('A', '_')
-    print(items)
     return items
 
 def neutral_item():
@@ -93,31 +90,40 @@ def neutral_item():
         search_id = r'<div class="inflictorWithValue neutral" data-tip="true" data-for="....................."><img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/items/\w+'
         neutral_items = re.findall(search_id, text)
         neutral_items = [neutral_items[173:] for neutral_items in neutral_items]
-        print(neutral_items)
     f.close()
     return neutral_items
 
 def agan():
     with open("html_code.txt", 'r') as f:
         text = f.read()
-        search_id = r'data-for="scepter" currentitem="\w+'
-        agan = re.findall(search_id, text)
-        agan = [agan[32:] for agan in agan]
-        print(agan)
+        search_id = r'</div></div></div><img src="/assets/images/dota2/scepter_\d+'
+        aghanim = re.findall(search_id, text)
+        aghanim = [aghanim[57:] for aghanim in aghanim]
     f.close()
-    return agan
+    return aghanim
 
 def shard():
     with open("html_code.txt", 'r') as f:
         text = f.read()
-        search_id = r'data-for="shard" currentitem="\w+'
-        shard = re.findall(search_id, text)
-        shard = [shard[30:] for shard in shard]
+        search_id = r'data-for="scepter" currentitem="false"><img src="/assets/images/dota2/shard_\d+'
+        ag_shard = re.findall(search_id, text)
+        ag_shard = [ag_shard[76:] for ag_shard in ag_shard]
     f.close()
-    return shard
+    return ag_shard
 
-def creating_full_heros_info():
-    pass
+def creating_full_heroes_info():
+    heroes = characters()
+    items = characters_items()
+    neutral_items = neutral_item()
+    aghanim = agan()
+    ag_shard = shard()
+    game_heroes = [heroes, items, neutral_items, aghanim, ag_shard]
+    print(game_heroes)
+    return game_heroes
+
+
+
+
 
 
 
