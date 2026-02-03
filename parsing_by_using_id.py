@@ -1,11 +1,11 @@
-from parsing_id import creating_links, gen_matches_id
+from parsing_id import creating_links
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 import re
 import shutil
 
-global url
+url = []
 def selenium(i):
     global url
     url = creating_links()
