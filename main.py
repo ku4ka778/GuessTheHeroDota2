@@ -29,6 +29,7 @@ def parsing_all_matches():
         json_file.close()
         os.remove('html_code.txt')
         os.remove('html_code(replaced).txt')
+        time.sleep(120)
 
 def auto_git_push(repo_path, commit_message):
     try:
@@ -41,8 +42,8 @@ def auto_git_push(repo_path, commit_message):
     except Exception as e:
         print(f'Error: {e}')
 
-def one_hour_timer():
-    total_minutes = 3600
+def timer():
+    total_minutes = 600
     while total_minutes > 0:
         print(f"{total_minutes} minutes left")
         total_minutes -= 1
@@ -52,5 +53,5 @@ def one_hour_timer():
 if __name__ == "__main__":
     while True:
         parsing_all_matches()
-        one_hour_timer()
+        timer()
         auto_git_push(REPO_DIR, COMMIT_MESSAGE)
