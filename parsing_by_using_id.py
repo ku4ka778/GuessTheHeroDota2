@@ -77,10 +77,6 @@ def characters_items():
             item.pop()
         item = [item[166:] for item in item]
         items.append(item)
-
-    for i in range(len(items)):
-        items = str(items)
-        items = items.replace('A', '_')
     return items
 
 def neutral_item():
