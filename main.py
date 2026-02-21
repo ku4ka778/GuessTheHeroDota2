@@ -24,34 +24,13 @@ def parsing_all_matches():
         with open('data.json', 'a') as json_file:
             data = creating_match_info(i)
             json.dump(data, json_file, indent=4)
-            json_file.write("\n")
             print(f"Dictionary {i} successfully  saved to data.json")
         json_file.close()
         os.remove('html_code.txt')
         os.remove('html_code(replaced).txt')
         time.sleep(120)
 
-def auto_git_push(repo_path, commit_message):
-    try:
-        repo = git.Repo(repo_path)
-        repo.git.add(update=True)
-        repo.index.commit(commit_message)
-        origin = repo.remote(name='origin')
-        origin.push()
-        print('Successfully added, committed, and pushed changes.')
-    except Exception as e:
-        print(f'Error: {e}')
-
-def timer():
-    total_minutes = 600
-    while total_minutes > 0:
-        print(f"{total_minutes} minutes left")
-        total_minutes -= 1
-        time.sleep(60)
-    print("The hour is over")
-
 if __name__ == "__main__":
     while True:
         parsing_all_matches()
-        timer()
-        auto_git_push(REPO_DIR, COMMIT_MESSAGE)
+
