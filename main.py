@@ -21,7 +21,7 @@ def parsing_all_matches():
         data.append(creating_match_info(i))
         os.remove('html_code.txt')
         os.remove('html_code(replaced).txt')
-        print(data)
+        print(data[i])
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
         time.sleep(180)
