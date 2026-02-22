@@ -41,10 +41,11 @@ def get_match_length():
 def characters():
     with open("html_code.txt", 'r', encoding='utf-8') as f:
         text = f.read()
-        search_id = r"/dota_react/heroes/\w+"
+        search_id = r'<div class="imageContainer"><img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/\w+'
         result = re.findall(search_id, text)
         heroes = list(dict.fromkeys(result))
-        heroes = [heroes[19:] for heroes in heroes]
+        heroes = [heroes[113:] for heroes in heroes]
+        heroes.insert(0, heroes.pop())
     f.close()
     return heroes
 
