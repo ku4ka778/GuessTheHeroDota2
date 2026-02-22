@@ -45,7 +45,6 @@ def characters():
         result = re.findall(search_id, text)
         heroes = list(dict.fromkeys(result))
         heroes = [heroes[113:] for heroes in heroes]
-        heroes.insert(0, heroes.pop())
     f.close()
     return heroes
 
