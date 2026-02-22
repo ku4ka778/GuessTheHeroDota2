@@ -1,11 +1,8 @@
 import time
 from parsing_by_using_id import selenium, creating_full_heroes_info, get_match_length
-import json
 import os
-import git
+import json
 
-REPO_DIR = 'C:/Users/unki/PycharmProjects/GuessTheHeroDota2'
-COMMIT_MESSAGE = 'Added_New_Matches'
 
 def creating_match_info(i):
     url = selenium(i)
@@ -16,21 +13,19 @@ def creating_match_info(i):
     heroes = creating_full_heroes_info()
     games_info= {}
     games_info[games_id[i]] = [games_url[i], games_time, heroes]
-    print(games_info)
     return games_info
 
 def parsing_all_matches():
+    data = list()
     for i in range(100):
-        with open('data.json', 'a') as json_file:
-            data = creating_match_info(i)
-            json.dump(data, json_file, indent=4)
-            print(f"Dictionary {i} successfully  saved to data.json")
-        json_file.close()
+        data.append(creating_match_info(i))
         os.remove('html_code.txt')
         os.remove('html_code(replaced).txt')
-        time.sleep(120)
+        print(data)
+        with open('data.json', 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        time.sleep(180)
 
 if __name__ == "__main__":
     while True:
         parsing_all_matches()
-
