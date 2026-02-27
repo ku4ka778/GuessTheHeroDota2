@@ -4,6 +4,7 @@ import random
 from telebot import types
 import json
 from collections import defaultdict
+import time
 
 bot = telebot.TeleBot('8352806479:AAGfL8EmnsbV-RHqHthM_l7lriI25O8e1K8')
 
@@ -30,11 +31,10 @@ def load_games():
         games_base = []
     return games_base
 
-
 load_games()
 
-
 def game(message):
+    load_games()
     user_id = message.from_user.id
     session = user_sessions[user_id]
 
@@ -141,6 +141,7 @@ def func(message):
                                   "(/reset чтоб заново сыграть, по сути тут рандом модуль и мб ты нью чаров с нью сборками встретишь)\n")
 
         elif message.text == "НАЧАТЬ ИГРАТЬ!!№!№!№!№!!!!№!№!":
+            load_games()
             if session['game_index'] >= len(games_base):
                 session['game_index'] = 0
                 session['game_round'] = 0
@@ -156,16 +157,17 @@ def func(message):
             start(message)
 
         elif message.text == 'ВПЕРЕД НАХУЙ ВПЕРЕЕЕЕЕД':
+            load_games()
             if session['game_index'] >= len(games_base):
                 bot.send_message(message.chat.id,
                                  'еблан ты уже сыграл дохуя! Иди поспи (чек "СКОК ИГР ДОСТУПНО")')
             else:
-                # Сбрасываем game_start перед началом игры
                 session['game_start'] = 0
                 session['game_round'] = 0
                 game(message)
 
         elif message.text == "СКОК ИГР ДОСТУПНО":
+            load_games()
             games_left = len(games_base) - session['game_index']
             if games_left < 0:
                 games_left = 0
@@ -190,3 +192,4 @@ def func(message):
 if __name__ == '__main__':
     print("Bot ready to work")
     bot.infinity_polling()
+    

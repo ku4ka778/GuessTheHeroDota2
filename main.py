@@ -24,7 +24,7 @@ def parsing_all_matches():
         print(data[i])
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
-        time.sleep(180)
+        time.sleep(300)
 
 if __name__ == "__main__":
     while True:

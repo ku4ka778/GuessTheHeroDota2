@@ -12,7 +12,7 @@ def selenium():
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.opendota.com/matches/highMmr")
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(10)
+    driver.set_page_load_timeout(300)
     html_source = driver.page_source
     with open("html_code.txt", "w", encoding='utf-8') as f:
         f.write(html_source)
