@@ -6,7 +6,7 @@ import json
 from collections import defaultdict
 import time
 
-bot = telebot.TeleBot('8352806479:AAGfL8EmnsbV-RHqHthM_l7lriI25O8e1K8')
+bot = telebot.TeleBot('Your token')
 
 user_sessions = defaultdict(lambda: {
     'game_start': 0,
